@@ -1,9 +1,12 @@
-import React from "react";
+import React, { useEffect } from 'react';
+import {Provider } from 'react-redux'
 import { Editor, updateEditor } from "@teselagen/ove";
 import store from "./store";
 
+import '@teselagen/ove/style';
+
 function App() {
-  React.useEffect(() => {
+  useEffect(() => {
     updateEditor(store, "DemoEditor", {
       sequenceData: {
         circular: true,
@@ -27,9 +30,9 @@ function App() {
   };
 
   return (
-    <div>
+    <Provider store={store}>
       <Editor {...editorProps} />
-    </div>
+    </Provider>
   );
 }
 
